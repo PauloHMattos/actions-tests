@@ -11,4 +11,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           label-template: waiting-test
           comment-template: |
-            Release {release_link} addresses this.
+            Release {release_tag} addresses this.
