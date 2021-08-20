@@ -33,7 +33,7 @@ jobs:
         run: git tag ${{ steps.versioning.outputs.version }}
         
   Release:
-    needs: [Changelog, Build_and_test]
+    needs: [Changelog]
     runs-on: ubuntu-latest
     steps:    
       - name: Create Release
