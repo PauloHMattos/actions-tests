@@ -7,7 +7,7 @@ jobs:
     steps:
     - uses: konradpabjan/move-labeled-or-milestoned-issue@v2.0
       with:
-        action-token: "${{ secrets.GITHUB_TOKEN }}"
-        project-url: "${{ secrets.CURRENT_PROJECT_URL }}"
+        action-token: ${{ secrets.GITHUB_TOKEN }}
+        project-url: ${{ secrets.CURRENT_PROJECT_URL }}
         column-name: "Waiting Test"
         label-name: "waiting-test"
