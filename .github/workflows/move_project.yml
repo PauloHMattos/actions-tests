@@ -11,3 +11,4 @@ jobs:
         project-url: ${{ secrets.CURRENT_PROJECT_URL }}
         column-name: "Waiting Test"
         label-name: "waiting-test"
+        columns-to-ignore: "Waiting Test"
