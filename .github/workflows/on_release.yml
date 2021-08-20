@@ -6,7 +6,7 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      - uses: apexskier/github-release-commenter@vv1.3.2
+      - uses: apexskier/github-release-commenter@v1.3.2
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           label-template: waiting-test
