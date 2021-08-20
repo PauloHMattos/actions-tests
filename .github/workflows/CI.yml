@@ -27,7 +27,7 @@ jobs:
           tag_prefix: ""
           major_pattern: "(MAJOR)"
           minor_pattern: "(MINOR)"
-          format: "${major}.${minor}.${patch}"
+          format: "v${major}.${minor}.${patch}"
           
       - name: Create tag
         run: git tag ${{ steps.versioning.outputs.version }}
