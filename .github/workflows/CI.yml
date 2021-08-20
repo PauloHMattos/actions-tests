@@ -1,0 +1,48 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the action will run. 
+on: [push]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  Changelog:
+    runs-on: ubuntu-latest
+    outputs:
+      new_version: ${{ steps.versioning.outputs.version }}
+      changelog: ${{ steps.create_changelog.outputs.changelog }}
+      
+    steps:
+      - name: Checkout Versions
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          ref: ${{ github.head_ref }}
+       
+      - name: Create Version
+        id: versioning
+        uses: paulhatch/semantic-version@v4.0.2
+        with:
+          tag_prefix: ""
+          major_pattern: "(MAJOR)"
+          minor_pattern: "(MINOR)"
+          format: "${major}.${minor}.${patch}.0"
+          
+      - name: Create tag
+        run: git tag ${{ steps.versioning.outputs.version }}
+        
+  Release:
+    needs: [Changelog, Build_and_test]
+    runs-on: ubuntu-latest
+    steps:    
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1.1.4
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ needs.Changelog.outputs.new_version }}
+          release_name: "Release ${{ needs.Changelog.outputs.new_version }}"
+          draft: false
+          prerelease: false
