@@ -15,7 +15,7 @@ jobs:
       with:
         autolabel-config: >
           [
-            {"column":"Resolved", "remove_labels": ["waiting-test"]}
+            {"column":"Resolved", "remove_labels": ["waiting-test"], "add_labels": [":heavy_check_mark: resolved"]}
           ]
         projectfilter-config: '{"include":["*"]}'
         repo-token: ${{ secrets.GITHUB_TOKEN }}
