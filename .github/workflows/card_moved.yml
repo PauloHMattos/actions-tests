@@ -13,4 +13,4 @@ jobs:
       uses: Matticusau/projectcard-autolabel@v1.0.0
       with:
         repo-token: ${{ secrets.GITHUB_TOKEN }}
-        autolabel-config: '[{"column":"Resolved", "remove_labels":["waiting-test"]}]'
+        autolabel-config: '[{"column":"Resolved", "add_labels":[":heavy_check_mark: resolved"], "remove_labels":["waiting-test"]}]'
